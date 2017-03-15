@@ -9,6 +9,7 @@
 User enters a query to find stories from NYTimes website optionally w/ date ranges.  Program displays link, headline, lead paragraph, author, and publish date.
 
 Stretch Goals:
+Date range for search
 Multiple page results
 Add multiple sites to search against
 Aggregate queryer for multiple sites

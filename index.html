@@ -13,12 +13,30 @@
       <h1>A News Article Search Engine!</h1>
       <div class="row">
         <div class="col-md-4">
-          <p>This is where the search form will go.</p>
-        </div>
+
+
+          <h3> Search NYTimes.com </h3>
+          <form id="search_terms">
+            <div class="form-group">
+              <label for="all-the-words">With <span class="labelHighlight">all</span> of the words</label>
+              <input id="all-the-words" class="form-control" type="text">
+              <label for="exact-phrase">With the <span class="labelHighlight">exact phrase</span></label>
+              <input id="exact-phrase" class="form-control" type="text">
+              <label for="at-least-one">With <span class="labelHighlight">at least one</span> of the words</label>
+              <input id="at-least-one" class="form-control" type="text">
+              <label for="without-words"><span class="labelHighlight">Without</span> these words</label>
+              <input id="without-words" class="form-control" type="text">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+          </form>
+
+
+        </div> <!-- End Col -->
         <div class="col-md-8">
           <p>This is where the results will display.</p>
-        </div>
-      </div>
-    </div>
+        </div>  <!-- End Col -->
+      </div> <!-- End Row -->
+    </div> <!-- End Container -->
   </body>
 </html>
