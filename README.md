@@ -47,6 +47,8 @@ gulp dev (gulp prod to uglify/minify)
 gulp serve
 
 
+##Create New Project - Module Installation Commands
+
 npm init
 
 npm install gulp --save-dev
@@ -67,23 +69,20 @@ npm install vinyl-source-stream --save-dev
 
 npm install browser-sync --save-dev
 
+npm install bower-files --save-dev
+
+npm install gulp-jshint --save-dev
+
+npm install gulp-sass gulp-sourcemaps --save-dev
+
+
 bower install jquery --save
 
 bower install bootstrap --save
 
 *not currently used* bower install moment --save
 
-gulp bower
 
-npm install bower-files --save-dev
-
-npm install gulp-jshint --save-dev
-
-gulp jsBrowserify
-
-gulp serve
-
-gulp jshint
 
 ## Remove build folder from git project (after adding it to .gitignore)
 

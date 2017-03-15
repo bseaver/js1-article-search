@@ -1,0 +1,40 @@
+{
+  "name": "article-search",
+  "version": "1.0.0",
+  "description": "new site article searcher",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccbpeden/article-search.git"
+  },
+  "keywords": [
+    "nytimes",
+    "article",
+    "search",
+    "api"
+  ],
+  "author": "Ben Seaver Charles Peden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ccbpeden/article-search/issues"
+  },
+  "homepage": "https://github.com/ccbpeden/article-search#readme",
+  "devDependencies": {
+    "bower-files": "^3.14.1",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.1.0",
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.9.4",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
