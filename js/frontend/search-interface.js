@@ -2,26 +2,21 @@ var Search = require('./../js/backend/search.js').searchModule;
 var searchSample = require('./../js/backend/search_sample.js').searchResultSample;
 
 var displayResults = function(searchResult) {
-  console.log(searchResult);
-  // Handle copyright and error
-  // Loop through resonse:docs
-  //  headline:main link to web_url
-  //  lead_paragraph
-  //  byline:original
-  //  pub_date
-  // Paging controls
-
   var displayResult;
   if (searchResult.status == "OK") {
-    displayResult = '<div class="well"><p>' + searchResult.copyright + '</p></div>';
-    searchResult.response.docs.forEach(function(doc){
-      displayResult += '<div class="well">';
-      displayResult += '<p><a href="' + doc.web_url + '" target="_blank">' + doc.headline.main + '</a></p>';
-      displayResult += '<p>' + doc.lead_paragraph + '</p>';
-      displayResult += '<p>' + doc.byline.original + '</p>';
-      displayResult += '<p>' + doc.pub_date.slice(0,10) + '</p>';
-      displayResult += '</div>';
-    });
+    if(searchResult.response.docs.length === 0){
+      displayResult = '<div class="well"><p>' + searchResult.copyright + '</p><p>No Results Found</p></div>';
+    } else {
+      displayResult = '<div class="well"><p>' + searchResult.copyright + '</p></div>';
+      searchResult.response.docs.forEach(function(doc){
+        displayResult += '<div class="well">';
+        displayResult += '<p><a href="' + doc.web_url + '" target="_blank">' + doc.headline.main + '</a></p>';
+        displayResult += '<p>' + doc.lead_paragraph + '</p>';
+        displayResult += '<p>' + doc.byline.original + '</p>';
+        displayResult += '<p>' + doc.pub_date.slice(0,10) + '</p>';
+        displayResult += '</div>';
+      });
+    }
   }
 
   if (displayResult) {
@@ -37,7 +32,8 @@ $(document).ready(function(){
     var atLeastOne = $("#at-least-one").val();
     var withoutWords = $("#without-words").val();
 
-    displayResults(searchSample);
-
+    // displayResults(searchSample);
+    var newSearch = new Search();
+    newSearch.searchNYTimes(allTheWords, exactPhrase, atLeastOne, withoutWords, 0, displayResults);
   });
 });
