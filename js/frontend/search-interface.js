@@ -33,12 +33,17 @@ var displayResults = function(searchResult) {
       displayResult += '<div class="well">';
       displayResult += '<p><a href="' + doc.web_url + '" target="_blank">' + doc.headline.main + '</a></p>';
       displayResult += '<p>' + doc.lead_paragraph + '</p>';
-      if ("byline" in doc && doc.byline != null && "original" in doc.byline) {
+      if ("byline" in doc && doc.byline !== null && "original" in doc.byline) {
         displayResult += '<p>' + doc.byline.original + '</p>';
       }
       displayResult += '<p>' + doc.pub_date.slice(0,10) + '</p>';
       displayResult += '</div>';
     });
+
+    if (newResult.response.docs.length < 10) {
+      displayResult += '<div class="well"><p>No further results returned</p></div>';
+      done = true;
+    }
   }
 
   if (displayResult) {
