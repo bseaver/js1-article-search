@@ -15,6 +15,7 @@ Add multiple sites to search against
 Aggregate queryer for multiple sites
 Support Lucene query method w/ tutorial.
 With thumbnail images.
+Some sort of loading statement or icon while waiting query return
 
 
 
