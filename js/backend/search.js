@@ -48,20 +48,58 @@ Search.prototype.constructLucene = function(){
   return lucene;
 };
 
+Search.prototype.digger = function(myProperty, subProperties) {
+  // result = "";
+  // failed = false;
+  // workingProperty;
+  //
+  // if (subProperties.length === 1) {
+  //   if (subProperties[0] in myProperty) {
+  //     workingProperty = myProperty[subProperties[0]];
+  //     failed = (workingProperty === null);
+  //   } else {
+  //     failed = true;
+  //   }
+  // }
+  //
+  // for (var index = 0; index < subProperties.length; index++) {
+  //   if (subProperties[index] in workingProperty) {
+  //     workingProperty = workingProperty[subProperties[index]];
+  //     failed = (workingProperty === null);
+  //   } else {
+  //     failed = true;
+  //   }
+  // }
+  //
+  // if (!failed) {
+  //   result = workingProperty;
+  // }
+  // return result;
+};
+
+
+Search.prototype.NYTimesExtractor = function(inputResponse) {
+  result = {source: "Digger", status: "bad"};
+  result["status"] = this.digger(inputResponse, ['status']);
+  console.log(result);
+};
+
 
 Search.prototype.searchNYTimes = function (page, thenCallBack, failCallBack){
   var lucene = this.constructLucene();
   var apiRequest = this.constructNYTimesURL(nyTimesAPI, lucene, page);
+  var thisSearch = this;
   $.get(apiRequest)
   .done(function(response){
     console.log(response);
+    thisSearch.NYTimesExtractor(response);
     thenCallBack(response);
   })
   .fail(function(error){
     console.log(error);
+    failResponse = error;
     failCallBack(error);
   });
-
 };
 
 exports.searchModule = Search;
