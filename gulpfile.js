@@ -103,7 +103,7 @@ gulp.task('htmlBuild', function() {
   browserSync.reload();
 });
 
-gulp.task('jsBuild', ['dev', 'jshint'], function(){
+gulp.task('jsBuild', ['jshint', 'dev'], function(){
   browserSync.reload();
 });
 

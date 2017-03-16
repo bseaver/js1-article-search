@@ -1,6 +1,10 @@
 var nyTimesAPI = require('./../../.env').nyTimesAPI;
 
-function Search() {
+function Search(allTheWords, exactPhrase, atLeastOne, withoutWords) {
+  this.allTheWords = allTheWords;
+  this.exactPhrase = exactPhrase;
+  this.atLeastOne = atLeastOne;
+  this.withoutWords = withoutWords;
 }
 
 Search.prototype.constructNYTimesURL = function (nyTimesAPI, lucene, page) {
@@ -18,11 +22,11 @@ Search.prototype.constructNYTimesURL = function (nyTimesAPI, lucene, page) {
   return url;
 };
 
-Search.prototype.constructLucene = function(allTheWords, exactPhrase, atLeastOne, withoutWords){
-  allTheWords = allTheWords.trim();
-  exactPhrase = exactPhrase.trim();
-  atLeastOne = atLeastOne.trim();
-  withoutWords = withoutWords.trim();
+Search.prototype.constructLucene = function(){
+  var allTheWords = this.allTheWords.trim();
+  var exactPhrase = this.exactPhrase.trim();
+  var atLeastOne = this.atLeastOne.trim();
+  var withoutWords = this.withoutWords.trim();
 
   lucene = "";
   if (allTheWords) {
@@ -44,11 +48,12 @@ Search.prototype.constructLucene = function(allTheWords, exactPhrase, atLeastOne
   return lucene;
 };
 
-Search.prototype.searchNYTimes = function (allTheWords, exactPhrase, atLeastOne, withoutWords, page, thenCallBack, failCallBack){
-  var lucene = this.constructLucene(allTheWords, exactPhrase, atLeastOne, withoutWords);
+
+Search.prototype.searchNYTimes = function (page, thenCallBack, failCallBack){
+  var lucene = this.constructLucene();
   var apiRequest = this.constructNYTimesURL(nyTimesAPI, lucene, page);
   $.get(apiRequest)
-  .then(function(response){
+  .done(function(response){
     console.log(response);
     thenCallBack(response);
   })
@@ -58,31 +63,5 @@ Search.prototype.searchNYTimes = function (allTheWords, exactPhrase, atLeastOne,
   });
 
 };
-
-// Weather.prototype.getWeather = function(city, callBack) {
-//   $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey)
-//     .then
-//     (
-//       function(response)
-//       {
-//         console.log(JSON.stringify(response));
-//         console.log(response);
-//         callBack(true, response.weather[0].description, city);
-//         // $('.showWeather').text("The weather in " + city + " is " + response.weather[0].description);
-//       }
-//     )
-//     .fail
-//     (
-//       function(error)
-//       {
-//         console.log(JSON.stringify(error));
-//         console.log(error);
-//
-//         callBack(false, error.responseJSON.message);
-//         // $('.showWeather').text(error.responseJSON.message);
-//       }
-//     );
-//
-// };
 
 exports.searchModule = Search;
