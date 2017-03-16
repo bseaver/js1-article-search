@@ -44,17 +44,17 @@ Search.prototype.constructLucene = function(allTheWords, exactPhrase, atLeastOne
   return lucene;
 };
 
-Search.prototype.searchNYTimes = function (allTheWords, exactPhrase, atLeastOne, withoutWords, page, callBack){
+Search.prototype.searchNYTimes = function (allTheWords, exactPhrase, atLeastOne, withoutWords, page, thenCallBack, failCallBack){
   var lucene = this.constructLucene(allTheWords, exactPhrase, atLeastOne, withoutWords);
   var apiRequest = this.constructNYTimesURL(nyTimesAPI, lucene, page);
   $.get(apiRequest)
   .then(function(response){
     console.log(response);
-    callBack(response);
+    thenCallBack(response);
   })
   .fail(function(error){
     console.log(error);
-    callBack(error);
+    failCallBack(error);
   });
 
 };

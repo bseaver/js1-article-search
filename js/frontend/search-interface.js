@@ -24,6 +24,34 @@ var displayResults = function(searchResult) {
   }
 };
 
+var displayFailure = function(searchResult){
+  var displayResult = "";
+
+  if (!displayResult && typeof searchResult == "object") {
+    if(typeof searchResult.responseJSON == "object" && typeof searchResult.responseJSON.message == "string"){
+      displayResult += '<p>Search failed.</p>';
+      displayResult += '<p>Response Message: ' + searchResult.responseJSON.message + '</p>';
+    }
+
+    if(typeof searchResult.statusText == "string"){
+      displayResult += '<p>Status Text: ' + searchResult.statusText + '</p>';
+    }
+
+    if(typeof searchResult.status == "number"){
+      displayResult += '<p>Status Number: ' + searchResult.status + '</p>';
+    }
+  }
+
+  if (!displayResult) {
+    displayResult = '<p>Call to search failed for unknown reason.</p>';
+  }
+
+  displayResult = '<div class="well">' + displayResult + '</div>';
+
+  $("#searchOutput").html(displayResult);
+};
+
+
 $(document).ready(function(){
   $("#search_terms").submit(function(event) {
     event.preventDefault();
@@ -34,6 +62,6 @@ $(document).ready(function(){
 
     // displayResults(searchSample);
     var newSearch = new Search();
-    newSearch.searchNYTimes(allTheWords, exactPhrase, atLeastOne, withoutWords, 0, displayResults);
+    newSearch.searchNYTimes(allTheWords, exactPhrase, atLeastOne, withoutWords, 0, displayResults, displayFailure);
   });
 });

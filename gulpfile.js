@@ -75,6 +75,7 @@ gulp.task('servedev', ['dev'], function() {
     }
   });
 
+  gulp.watch(['.env'], ['jsBuild']);
   gulp.watch(['js/frontend/*.js'], ['jsBuild']);
   gulp.watch(['js/backend/*.js'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
@@ -90,6 +91,7 @@ gulp.task('serveprod', ['prod'], function() {
     }
   });
 
+  gulp.watch(['.env'], ['jsBuild']);
   gulp.watch(['js/frontend/*.js'], ['jsBuild']);
   gulp.watch(['js/backend/*.js'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
