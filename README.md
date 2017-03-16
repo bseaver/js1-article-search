@@ -19,12 +19,14 @@ With thumbnail images.
 
 
 ## Setup Requirements
-node.js (for npm)
-npm
-gulp
-bower
-ruby (for gem install sass)
-sass
+node.js (for npm)  https://nodejs.org/
+npm https://www.npmjs.com/
+gulp http://gulpjs.com/
+bower https://bower.io/
+ruby (for gem install sass) https://www.ruby-lang.org/
+sass http://sass-lang.com/install
+
+optional installation tool: Homebrew https://brew.sh/
 
 
 ## Installation Instructions
@@ -36,7 +38,7 @@ Create .env file at root of project folder with the single line:
 
   exports.apiKey = "your-api-key-here";
 
-then run:
+then run at the command line:
 
 npm install
 
@@ -44,9 +46,11 @@ bower install
 
 gem install sass
 
-gulp dev (gulp prod to uglify/minify)
+gulp jshint (to check for errors)
 
-gulp serve
+gulp dev (to generate build, gulp prod to uglify/minify the build)
+
+gulp servedev (to serve the dev build, gulp serveprod to serve the production)
 
 
 ##Create New Project - Module Installation Commands
@@ -128,6 +132,7 @@ npm install gulp-sass gulp-sourcemaps --save-dev
 * rudimentary front end for getting query info and display results
 * js for manipulation of front end data into api query form
 * back end api query
+* handle errors: empty result set, bad key or search data, bad destination
 * manipulation of results to display
 * styling and completion of html
 
