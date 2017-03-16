@@ -29,7 +29,6 @@ var displayFailure = function(searchResult){
 
   if (!displayResult && typeof searchResult == "object") {
     if(typeof searchResult.responseJSON == "object" && typeof searchResult.responseJSON.message == "string"){
-      displayResult += '<p>Search failed.</p>';
       displayResult += '<p>Response Message: ' + searchResult.responseJSON.message + '</p>';
     }
 
@@ -43,10 +42,10 @@ var displayFailure = function(searchResult){
   }
 
   if (!displayResult) {
-    displayResult = '<p>Call to search failed for unknown reason.</p>';
+    displayResult = '<p>Reason: Unknown.</p>';
   }
 
-  displayResult = '<div class="well">' + displayResult + '</div>';
+  displayResult = '<div class="well"><p>Search failed.</p>' + displayResult + '</div>';
 
   $("#searchOutput").html(displayResult);
 };

@@ -34,9 +34,9 @@ optional installation tool: Homebrew https://brew.sh/
 
 Acquire API key from http://developer.nytimes.com/.
 
-Create .env file at root of project folder with the single line:
+Create .env file at root of project folder with the following single line:
 
-  exports.apiKey = "your-api-key-here";
+exports.nyTimesAPI = "your-NY-Times-API-key-here";
 
 then run at the command line:
 
